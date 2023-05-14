@@ -26,7 +26,10 @@ class AuthService {
   
   Future<void> login(email , password) async {
     final url = '$baseUrl/api/users/login';
-    final headers = {'Content-Type' :'application/json'};
+    final headers = {
+      'Content-Type' :'application/json' ,
+      'entity-type' :'staff' 
+      };
     final body = jsonEncode({email: email, password: password});
     
     final response = await http
@@ -35,7 +38,6 @@ class AuthService {
       print('Error: $error');
     });
 
-    print(response) ;
 
     if (response.statusCode != 200) {
       throw Exception('Failed to sign up: ${response.statusCode}');

@@ -1,9 +1,20 @@
+import 'package:cms_final_final/providers/UserTypeProvider.dart';
 import 'package:flutter/material.dart';
 import 'pages/signup_form.dart';
 import 'pages/LoginForm.dart';
+import 'pages/Regist.dart';
+import 'package:provider/provider.dart';
+// void main() {
+//   runApp(MyApp());
+// }
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider<UserTypeProvider>(
+      create: (_) => UserTypeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,14 +25,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginForm(),
       },
       title: 'My App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Signup'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: SignupForm(),
-        ),
+      theme: ThemeData.dark(),
+      home: const Scaffold(
+        body:    Regist(),
         
       ),
     );
