@@ -8,8 +8,11 @@ class AuthService {
 
    Future<void> signUp(User user) async {
     final url = '$baseUrl/api/users/signup';
-    final headers = {'Content-Type' :'application/json'};
-    final body = jsonEncode(user.toJson());
+        final headers = {
+      'Content-Type' :'application/json' ,
+      'entity-type' :'staff' 
+      };
+      final body = jsonEncode(user.toJson());
 
     
     final response = await http
